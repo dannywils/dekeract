@@ -11,7 +11,7 @@ public class SmoothFollow2D : MonoBehaviour {
     private Vector3 velocity = Vector3.zero;
 	private Vector3 delta;
 	private float zoom;
-	private float endFOV = 30;
+	private float endFOV;
 	
 	void Start(){
 
@@ -19,6 +19,7 @@ public class SmoothFollow2D : MonoBehaviour {
        	{
 			delta = transform.position - target.position ;
 		}
+		endFOV = camera.fieldOfView;
 		camera.fieldOfView = startFOV;
 		
 		
