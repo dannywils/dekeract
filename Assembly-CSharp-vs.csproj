@@ -44,9 +44,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CharacterController.cs" />
-     <Compile Include="Assets\RotateWorld.cs" />
-     <Compile Include="Assets\SmoothFollow2D.cs" />
+     <Compile Include="Assets\Compass.cs" />
+     <Compile Include="Assets\Scripts\CharacterController.cs" />
+     <Compile Include="Assets\Scripts\RotateWorld.cs" />
+     <Compile Include="Assets\Scripts\SmoothFollow2D.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>

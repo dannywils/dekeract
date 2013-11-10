@@ -8,6 +8,7 @@ public class RotateWorld : MonoBehaviour
 	public float speed = 5;
 	
 	public GameObject world;
+	public GameObject compass;
 	
 	//state variables
 	private bool rotatable = true;
@@ -26,11 +27,16 @@ public class RotateWorld : MonoBehaviour
 		rotatable = lastRotate + wait <= Time.time;
 		if(rotating){
 			Quaternion newRotation = Quaternion.AngleAxis(rotationAngle, new Vector3(0, 0, 1));
-			world.transform.rotation = Quaternion.Slerp(world.transform.rotation, newRotation, speed * Time.deltaTime);
 			
+			world.transform.rotation = Quaternion.Slerp(world.transform.rotation, newRotation, speed * Time.deltaTime);
+
+			Compass game = compass.GetComponent<Compass>();
+			game.angle = world.transform.rotation.eulerAngles.z + 180;
+
 			if(transform.rotation == newRotation){
 				rotating = false;
 			}
+			
 		}
 		if(!rotatable){
 			this.light.intensity = 0;
