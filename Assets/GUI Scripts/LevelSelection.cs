@@ -4,7 +4,7 @@ using System.Collections;
 public class LevelSelection : MonoBehaviour {
 
 	public GUISkin menuSkin;
-	string menu = "";
+
 	void OnGUI()
 	{
 		GUI.skin = menuSkin;
