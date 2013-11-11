@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RotateWorld.cs">
     <Files>
-      <File FileName="Assets\Scripts\RotateWorld.cs" Line="32" Column="4" />
+      <File FileName="Assets\Scripts\RotateWorld.cs" Line="33" Column="43" />
+      <File FileName="Assets\Compass.cs" Line="68" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
