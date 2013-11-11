@@ -31,10 +31,11 @@ public class RotateWorld : MonoBehaviour
 			world.transform.rotation = Quaternion.Slerp(world.transform.rotation, newRotation, speed * Time.deltaTime);
 
 			Compass game = compass.GetComponent<Compass>();
-			game.angle = world.transform.rotation.eulerAngles.z + 180;
+			game.angle = -world.transform.rotation.eulerAngles.z;
 
 			if(transform.rotation == newRotation){
 				rotating = false;
+				transform.rotation = newRotation;
 			}
 			
 		}
