@@ -50,6 +50,7 @@ public class RotateWorld : MonoBehaviour
 		if (other.tag == "Player" && rotatable && !rotating) {
 			rotating = true;
 			lastRotate = Time.time;
+			audio.Play();
 		}
 	
 	}
