@@ -29,12 +29,12 @@ public class RotateWorld : MonoBehaviour
 		rotatable = lastRotate + wait <= Time.time;
 		
 		if(rotating){
-			if(Mathf.Abs(world.transform.rotation.eulerAngles.z - newRotation.eulerAngles.z) <= 0.1f){
+			if(Mathf.Abs(world.transform.rotation.eulerAngles.z - newRotation.eulerAngles.z) <= 0.1f || rotatable){
 				rotating = false;
 				world.transform.rotation = newRotation;
 				return;
 			}			
-			world.transform.rotation = Quaternion.Slerp(world.transform.rotation, newRotation, speed * Time.deltaTime);
+			world.transform.rotation = Quaternion.Lerp(world.transform.rotation, newRotation, speed * Time.deltaTime);
 			compass.GetComponent<Compass>().angle = -world.transform.rotation.eulerAngles.z;
 		}
 		

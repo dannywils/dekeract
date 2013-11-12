@@ -48,6 +48,7 @@
      <Compile Include="Assets\GUI Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\CharacterController.cs" />
      <Compile Include="Assets\Scripts\Compass.cs" />
+     <Compile Include="Assets\Scripts\EndLevelTrigger.cs" />
      <Compile Include="Assets\Scripts\MenuSound.cs" />
      <Compile Include="Assets\Scripts\RotateCamera.cs" />
      <Compile Include="Assets\Scripts\RotateWorld.cs" />
