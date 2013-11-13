@@ -3,11 +3,11 @@ using System.Collections;
  
 public class SmoothFollow2D : MonoBehaviour
 {
- 
 	public float dampTime = 0.15f;
 	public float zoomSpeed = 2;
 	public float startFOV = 180;
 	public Transform target;
+	
 	private Vector3 velocity = Vector3.zero;
 	private Vector3 delta;
 	private float zoom;
@@ -30,7 +30,7 @@ public class SmoothFollow2D : MonoBehaviour
 	void Update ()
 	{
 		if (Input.GetKey ("z")) {
-			endFOV = 55;
+			endFOV = 80;
 		} else {
 			endFOV = initialEndFOV;
 		}
