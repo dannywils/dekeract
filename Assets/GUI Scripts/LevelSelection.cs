@@ -4,7 +4,12 @@ using System.Collections;
 public class LevelSelection : MonoBehaviour {
 
 	public GUISkin menuSkin;
-
+	private int lastLevel;
+	
+	void Start(){
+		//PlayerPrefs.DeleteAll();
+		lastLevel = PlayerPrefs.GetInt("lastLevel");
+	}
 	void OnGUI()
 	{
 		GUI.skin = menuSkin;
@@ -18,18 +23,24 @@ public class LevelSelection : MonoBehaviour {
 		
 		GUI.Box(new Rect(0, 0, 300, 300),"Choose a Level");
 		
-		int count = 0;
+		int index = 0;
 		for(int i = 0; i < 2; i++){
 			for(int j = 0; j < 5; j++){
-				count++;
-				//if the user clicked the button
-				if (GUI.Button(new Rect (15 + 55 * j , 95 * i + 45,50,90), count.ToString())){
-					//if the level exists, load it
-					if(Application.levelCount > (count + 1)){
-						Application.LoadLevel("Level" + count);
+				index++;
+				if(Application.levelCount > index + 1){
+					if(lastLevel + 1 >= index){
+						//if the user clicked the button
+						if (GUI.Button(new Rect (15 + 55 * j , 95 * i + 45,50,90), index.ToString())){
+							//if the level exists, load it
+							Application.LoadLevel("Level" + index);
+						} 
 					} else {
-						Debug.Log ("Level " + count + " doesn't exist");
+						//level is locked
+						GUI.Button(new Rect (15 + 55 * j , 95 * i + 45,50,90), "✘");
 					}
+				} else {
+					//Level was not found
+					GUI.Button(new Rect (15 + 55 * j , 95 * i + 45,50,90), "");
 				}
 			}
 		}

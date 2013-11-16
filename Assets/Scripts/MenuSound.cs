@@ -6,13 +6,20 @@ public class MenuSound : MonoBehaviour {
 	
 	public AudioClip MenuMusic;
 	public AudioClip[] LevelMusic;
+	private static bool loaded = false;
 	
 	void Awake ()
 	{
-		DontDestroyOnLoad (gameObject);
+		//if we already have a script, destroy the new one
+		if(loaded) {
+			Destroy (gameObject);
+		} else {	
+			DontDestroyOnLoad (gameObject);
+		}
 	}
 	// Use this for initialization
 	void Start () {
+		loaded = true;
 		audio.PlayOneShot(MenuMusic);
 	}
 	
