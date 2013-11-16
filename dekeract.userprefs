@@ -3,9 +3,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GUI Scripts\LevelSelection.cs">
     <Files>
       <File FileName="Assets\GUI Scripts\MainMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MenuSound.cs" Line="33" Column="33" />
-      <File FileName="Assets\Scripts\EndLevelTrigger.cs" Line="20" Column="48" />
-      <File FileName="Assets\GUI Scripts\LevelSelection.cs" Line="29" Column="7" />
+      <File FileName="Assets\Scripts\MenuSound.cs" Line="27" Column="18" />
+      <File FileName="Assets\Scripts\EndLevelTrigger.cs" Line="28" Column="5" />
+      <File FileName="Assets\GUI Scripts\LevelSelection.cs" Line="10" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

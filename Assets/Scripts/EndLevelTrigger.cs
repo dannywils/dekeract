@@ -11,17 +11,15 @@ public class EndLevelTrigger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 	
 	void OnTriggerEnter (Collider other) {
 	    if(other.tag == "Player"){
-			int nextLevel = Application.loadedLevel + 2;
-			
-			if(Application.levelCount  > nextLevel + 1){
+			int nextLevel = Application.loadedLevel;
+			if(Application.levelCount > nextLevel + 1){
 				Application.LoadLevel("level" +  nextLevel);
 				if(nextLevel > lastLevel){
-					PlayerPrefs.SetInt("lastLevel", Application.loadedLevel + 1);
+					PlayerPrefs.SetInt("lastLevel", nextLevel);
 				}
 			} else {
 				//If there are no more levels left, show the "You win" scene
