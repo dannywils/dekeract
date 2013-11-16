@@ -22,17 +22,22 @@ public class LevelSelection : MonoBehaviour {
 		for(int i = 0; i < 2; i++){
 			for(int j = 0; j < 5; j++){
 				count++;
+				//if the user clicked the button
 				if (GUI.Button(new Rect (15 + 55 * j , 95 * i + 45,50,90), count.ToString())){
-					Application.LoadLevel("Level" + count);
+					//if the level exists, load it
+					if(Application.levelCount > (count + 1)){
+						Application.LoadLevel("Level" + count);
+					} else {
+						Debug.Log ("Level " + count + " doesn't exist");
+					}
 				}
 			}
 		}
-		
+		//return to the main menu
 		if (GUI.Button(new Rect (135,265,160,30), "Back")){
 			Application.LoadLevel("MainMenu");
 		}
 
-		
 		GUI.EndGroup();
 	}
 }

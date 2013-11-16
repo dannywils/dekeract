@@ -16,12 +16,12 @@ public class EndLevelTrigger : MonoBehaviour {
 	
 	void OnTriggerEnter (Collider other) {
 	    if(other.tag == "Player"){
-			if(Application.levelCount > level){
-				level++;
-				Application.LoadLevel("level" +  level);
+			if(Application.levelCount > Application.loadedLevel){
+				Application.LoadLevel("level" +  Application.loadedLevel);
 			} else {
+				//If there are no more levels left, show the "You win" scene
 				Debug.Log("You win!");
-				Application.Quit ();
+				Application.LoadLevel("MainMenu");
 			}
 		}
 	}

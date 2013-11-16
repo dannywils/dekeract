@@ -22,9 +22,15 @@ public class MenuSound : MonoBehaviour {
 	}
 	
 	void OnLevelWasLoaded(int level) {
+		Debug.Log ("Scene " + level + " loaded.");
 		if(LevelMusic.Length > level-2 && level >= 2){
+			//if we're on a level, play that level's music
 			audio.Stop();
 			audio.PlayOneShot(LevelMusic[level-2]);
+		} else if (level == 0){ 
+			//if we are back at the menu, play the menu music
+			audio.Stop();
+			audio.PlayOneShot(MenuMusic);
 		}
     }
 	
