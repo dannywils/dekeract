@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FlashingLights.cs" />
      <Compile Include="Assets\GUI Scripts\HUD.cs" />
      <Compile Include="Assets\GUI Scripts\LevelSelection.cs" />
      <Compile Include="Assets\GUI Scripts\MainMenu.cs" />
@@ -60,6 +61,7 @@
      <Compile Include="Assets\Scripts\RotateCamera.cs" />
      <Compile Include="Assets\Scripts\RotateWorld.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow2D.cs" />
+     <Compile Include="Assets\SphereColor.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
   <ItemGroup>

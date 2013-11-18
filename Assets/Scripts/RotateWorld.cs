@@ -48,9 +48,9 @@ public class RotateWorld : MonoBehaviour
 		}
 		
 		if (!rotatable) {
-			this.light.intensity = 0;
+			this.light.range = 2;
 		} else {
-			this.light.intensity = 7;
+			this.light.range = 4;
 		}
 	}
 	
