@@ -19,11 +19,14 @@ public class RotateWorld : MonoBehaviour
 	private float currentRotation;
 	private float needToRotate;
 	private float direction;
+	private float endTime;
+	private float startTime;
 
 	// Use this for initialization
 	void Start ()
 	{
-		lastRotate = Time.time - wait;
+		startTime = Time.time;
+		lastRotate = startTime - wait;
 		newRotation = Quaternion.AngleAxis (rotationAngle, new Vector3 (0, 0, 1));
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
@@ -34,6 +37,7 @@ public class RotateWorld : MonoBehaviour
 		rotatable = lastRotate + wait <= Time.time;
 
 		if (rotating) {
+
 			if (rotationAmt > Mathf.Abs (needToRotate)) {
 				rotating = false;
 				world.transform.rotation = newRotation;
@@ -45,27 +49,30 @@ public class RotateWorld : MonoBehaviour
 			rotationAmt += speed * Time.deltaTime;
 			//rotate the compass too		
 			compass.GetComponent<Compass> ().angle = -world.transform.rotation.eulerAngles.z;
+
 		}
-		
+		//animate the intensity of light
 		if (!rotatable) {
-			this.light.range = 2;
-		} else {
-			this.light.range = 4;
+			light.range = Mathf.InverseLerp(lastRotate, lastRotate + wait + 1, Time.time) * 4 + 1;
+			light.intensity = 2;
+		} else{
+			light.intensity = 8;
 		}
 	}
 	
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.tag == "Player" && rotatable && !rotating) {
-			rotating = true;
 			rotationAmt = 0;
 			currentRotation = world.transform.rotation.eulerAngles.z;
 			needToRotate = Mathf.DeltaAngle (currentRotation, rotationAngle);
+			if(needToRotate != 0){
+				rotating = true;
+			}
 			direction = needToRotate > 0 ? 1 : -1;
+			
 			lastRotate = Time.time;
 			audio.Play ();
-			
 		}
-	
 	}
 }
