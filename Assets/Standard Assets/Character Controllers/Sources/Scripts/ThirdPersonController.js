@@ -7,11 +7,13 @@ public var walkAnimation : AnimationClip;
 public var runAnimation : AnimationClip;
 public var jumpPoseAnimation : AnimationClip;
 
-public var walkMaxAnimationSpeed : float = 0.75;
-public var trotMaxAnimationSpeed : float = 1.0;
-public var runMaxAnimationSpeed : float = 1.0;
-public var jumpAnimationSpeed : float = 1.15;
-public var landAnimationSpeed : float = 1.0;
+private var walkMaxAnimationSpeed : float = 0.75;
+private var trotMaxAnimationSpeed : float = 1.0;
+private var runMaxAnimationSpeed : float = 1.3;
+private var jumpAnimationSpeed : float = 1.15;
+private var landAnimationSpeed : float = 1.0;
+
+walkAnimation = runAnimation;
 
 private var _animation : Animation;
 
@@ -24,13 +26,33 @@ enum CharacterState {
 }
 
 private var _characterState : CharacterState;
+private var axisH: float = 0;
+private var axisV: float = 0;
+ 
+function InputGetAxis(axis: String): float {
+ 
+    var v = Input.GetAxis(axis);
+    if (Mathf.Abs(v) > 0.005) return v;
+    if (axis=="Horizontal") return axisH;
+    if (axis=="Vertical") return axisV;
+}
+ 
+/*function OnGUI(){
+ 
+    //axisV = axisH = 0;
+    if (GUI.RepeatButton(Rect(50, 10, 40, 40), "W")) axisV = 1; 
+    if (GUI.RepeatButton(Rect(50, 90, 40, 40), "S")) axisV = -1; 
+    if (GUI.RepeatButton(Rect(10, 50, 40, 40), "A")) axisH = -1;
+    if (GUI.RepeatButton(Rect(90, 50, 40, 40), "D")) axisH = 1;
+}
+*/
 
 // The speed when walking
-var walkSpeed = 2.0;
+private var walkSpeed = 6.0;
 // after trotAfterSeconds of walking we trot with trotSpeed
-var trotSpeed = 4.0;
+private var trotSpeed = 1.0;
 // when pressing "Fire3" button (cmd) we start running
-var runSpeed = 6.0;
+private var runSpeed = 7.0;
 
 var inAirControlAcceleration = 3.0;
 
@@ -42,11 +64,11 @@ var gravity = 20.0;
 // The gravity in controlled descent mode
 var speedSmoothing = 10.0;
 var rotateSpeed = 500.0;
-var trotAfterSeconds = 3.0;
+var trotAfterSeconds = 3;
 
 var canJump = true;
 
-private var jumpRepeatTime = 0.05;
+private var jumpRepeatTime = 0.1;
 private var jumpTimeout = 0.15;
 private var groundedTimeout = 0.25;
 
@@ -89,6 +111,13 @@ private var lastGroundedTime = 0.0;
 
 
 private var isControllable = true;
+
+
+// touch stuff
+private var touchstart = 0;
+private var touchhold = 0.5;
+private var touching = false;
+
 
 function Awake ()
 {
@@ -138,8 +167,8 @@ function UpdateSmoothedMovementDirection ()
 	// Always orthogonal to the forward vector
 	var right = Vector3(forward.z, 0, -forward.x);
 
-	var v = Input.GetAxisRaw("Vertical");
-	var h = Input.GetAxisRaw("Horizontal");
+	var v = InputGetAxis("Vertical");
+	var h = InputGetAxis("Horizontal");
 
 	// Are we moving backwards or looking backwards
 	if (v < -0.2)
@@ -384,6 +413,34 @@ function Update() {
 			SendMessage("DidLand", SendMessageOptions.DontRequireReceiver);
 		}
 	}
+	
+	
+	//add touch control
+	//private var touchstart = 0;
+	//private var touchhold = 0.5;
+	//private var touching = false;
+
+	if (Input.touchCount > 0)
+	{
+		
+	    var touch = Input.GetTouch(0);
+	    //jump on two finger touch
+	    if (Input.touchCount >= 2){
+			lastJumpButtonTime = Time.time;
+		}
+		//we're on the left side of the screen
+	    if (touch.position.x < Screen.width/2)
+	    {
+			axisH = -1;
+	    }
+	    else if (touch.position.x > Screen.width/2)
+	    {
+	       axisH = 1;
+	    }
+	}  else {
+		//dont move if no touches
+		axisH = 0;
+	}
 }
 
 function OnControllerColliderHit (hit : ControllerColliderHit )
@@ -420,7 +477,7 @@ function GetLockCameraTimer ()
 
 function IsMoving ()  : boolean
 {
-	return Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.5;
+	return Mathf.Abs(InputGetAxis("Vertical")) + Mathf.Abs(InputGetAxis("Horizontal")) > 0.5;
 }
 
 function HasJumpReachedApex ()

@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
 		style.normal.textColor = Color.white;
 		
 		GUI.Label (new Rect (Screen.width / 2 - 200, Screen.height / 2 - 200, 0, 0), "Dekeract", style);
-		
+
 		switch (menu) {
 		case "help":
 			GUI.BeginGroup (new Rect (Screen.width / 2 - 250, Screen.height / 2 - 100, 500, 500));
