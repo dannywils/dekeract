@@ -11,8 +11,8 @@ public class HUD : MonoBehaviour {
 	void OnGUI ()
 	{
 		GUI.skin = HUDSkin;
-		
-		if(GUI.Button(new Rect(Screen.width-60, 10, 50, 50), "||"))
+
+		if(GUI.Button(new Rect(Screen.width-Screen.width/9 - 10, 10, Screen.width/9, Screen.height/9), "||"))
 			paused = true;
 		
 		if(paused)
