@@ -20,14 +20,14 @@ public class MainMenu : MonoBehaviour
 		case "help":
 			GUI.BeginGroup (new Rect (Screen.width / 2 - 250, Screen.height / 2 - 100, 500, 500));
 			GUI.Box (new Rect (0, 0, 500, 300), "");
-			GUI.Label (new Rect (10, 10, 490, 290), "ADD HELP DATA");
+			GUI.Label (new Rect (10, 10, 490, 290), "Use the compass and minimap to navigate through the puzzles of the Dekeract. Good luck, you'll need it.");
 			if (GUI.Button (new Rect (335, 265, 160, 30), "Back"))
 				menu = "";
 			break;
 		case "storyline":
 			GUI.BeginGroup (new Rect (Screen.width / 2 - 250, Screen.height / 2 - 100, 500, 500));
 			GUI.Box (new Rect (0, 0, 500, 300), "");
-			GUI.Label (new Rect (10, 10, 490, 290), "ADD STORYLINE DATA");
+			GUI.Label (new Rect (10, 10, 490, 290), "This game takes place in an alien research facility floating in space called the Dekeract. Test subjects are placed inside puzzle cubes and required to escape, or die.");
 			if (GUI.Button (new Rect (335, 265, 160, 30), "Back"))
 				menu = "";
 			break;
