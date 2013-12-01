@@ -10,6 +10,7 @@ public class KillPlayer : MonoBehaviour
 	}
 	void OnParticleCollision (GameObject other) {
 		if(other.tag == "Player"){
+			//HUD.TimePenalty = 30;
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
