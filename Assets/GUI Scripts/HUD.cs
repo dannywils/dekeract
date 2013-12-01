@@ -7,6 +7,7 @@ public class HUD : MonoBehaviour {
 	public Texture PauseButton, Heart;
 	public int PlayerLives;
 	bool paused = false;
+	public int TimePenalty;
 	
 	void OnGUI ()
 	{
@@ -46,14 +47,14 @@ public class HUD : MonoBehaviour {
 			GUI.DrawTexture(new Rect(100 + i*30, Screen.height-40, 25, 25), Heart, ScaleMode.ScaleToFit);
 		}
 		
-		GUI.Label(new Rect(Screen.width/2-160, Screen.height-40, 350, 30), "Game Time: " + Timer());
+		GUI.Label(new Rect(Screen.width/2-160, Screen.height-40, 350, 30), "Game Time: " + Timer(TimePenalty));
 	}
 	
-	public string Timer()
+	public string Timer(int penalty = 0)
 	{
-	    var hours = Mathf.Floor(Time.time/3600.0f);
-	    var minutes = Mathf.Floor((Time.time - hours*3600f)/60f);
-	    var seconds = Mathf.Floor(Time.time - hours*3600f - minutes*60f);
+	    var hours = Mathf.Floor(Time.timeSinceLevelLoad/3600.0f);
+	    var minutes = Mathf.Floor((Time.timeSinceLevelLoad - hours*3600f)/60f);
+	    var seconds = Mathf.Floor(Time.timeSinceLevelLoad - hours*3600f - minutes*60f) + penalty;
 	    return string.Format(hours.ToString() + ":" + minutes.ToString() + ":" + seconds.ToString());
 	} 
 }
