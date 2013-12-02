@@ -20,7 +20,8 @@ public class MainMenu : MonoBehaviour
 		case "help":
 			GUI.BeginGroup (new Rect (Screen.width / 2 - 250, Screen.height / 2 - 100, 500, 500));
 			GUI.Box (new Rect (0, 0, 500, 300), "");
-			GUI.Label (new Rect (10, 10, 490, 290), "Use the compass and minimap to navigate through the puzzles of the Dekeract. Good luck, you'll need it.");
+			GUI.Label (new Rect (10, 10, 490, 290), "Use the compass and minimap to navigate through the puzzles of the Dekeract. Good luck, you'll need it. \n\n" +
+			           "Controls: \nW/A\t-\tMove\nShift\t-\tRun\nSpace\t-\tJump\nZ\t-\tzoom out");
 			if (GUI.Button (new Rect (335, 265, 160, 30), "Back"))
 				menu = "";
 			break;

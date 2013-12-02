@@ -44,8 +44,8 @@ public class LevelSelection : MonoBehaviour
 				for (int i = 0; i < rows; i++) {
 						for (int j = 0; j < columns; j++) {
 								index++;
-								if (Application.levelCount > index + 1) {
-										if (lastLevel + 1 >= index) {
+								if (Application.levelCount - 2 > index) {
+										if (lastLevel >= index) {
 												//if the user clicked the button
 												if (GUI.Button (new Rect (width / columns * j, (height - 2 * yOffset) / rows * i, width / columns, (height - 2 * yOffset) / rows), index.ToString ())) {
 														//if the level exists, load it
@@ -53,7 +53,7 @@ public class LevelSelection : MonoBehaviour
 												} 
 										} else {
 												//level is locked
-												GUI.Button (new Rect (width / columns * j, (height - 2 * yOffset) / rows * i, width / columns, (height - 2 * yOffset) / rows), "Locked");
+												GUI.Button (new Rect (width / columns * j, (height - 2 * yOffset) / rows * i, width / columns, (height - 2 * yOffset) / rows), "X");
 										}
 								} else {
 										//Level was not found

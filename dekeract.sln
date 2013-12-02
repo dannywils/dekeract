@@ -7,6 +7,8 @@ Project("{A59DEB0C-4EF2-D24B-682F-127DFF0E4589}") = "dekeract", "Assembly-CSharp
 EndProject
 Project("{A59DEB0C-4EF2-D24B-682F-127DFF0E4589}") = "dekeract", "Assembly-UnityScript-firstpass.unityproj", "{37C81445-7715-5004-712E-CFD4122E8562}"
 EndProject
+Project("{A59DEB0C-4EF2-D24B-682F-127DFF0E4589}") = "dekeract", "Assembly-UnityScript.unityproj", "{2044B96F-ECA8-E97F-9056-D62FC74B98DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,11 +27,15 @@ Global
 		{37C81445-7715-5004-712E-CFD4122E8562}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C81445-7715-5004-712E-CFD4122E8562}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37C81445-7715-5004-712E-CFD4122E8562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2044B96F-ECA8-E97F-9056-D62FC74B98DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2044B96F-ECA8-E97F-9056-D62FC74B98DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2044B96F-ECA8-E97F-9056-D62FC74B98DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2044B96F-ECA8-E97F-9056-D62FC74B98DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																								GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																											GlobalSection(MonoDevelopProperties) = preSolution
 																																																																																										GlobalSection(MonoDevelopProperties) = preSolution
 																																																															GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
