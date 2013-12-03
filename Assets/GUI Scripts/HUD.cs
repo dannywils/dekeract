@@ -12,7 +12,7 @@ public class HUD : MonoBehaviour {
 	void OnGUI ()
 	{
 		GUI.skin = HUDSkin;
-
+		
 		if(GUI.Button(new Rect(Screen.width-Screen.width/9 - 10, 10, Screen.width/9, Screen.height/9), "||"))
 			paused = true;
 		
@@ -40,21 +40,24 @@ public class HUD : MonoBehaviour {
 			}
 			GUI.EndGroup();
 		}
-		
-		GUI.Label(new Rect(10, Screen.height-40, 75, 30), "Lives:");
-		for(int i = 0; i < PlayerLives; i++)
-		{
-			GUI.DrawTexture(new Rect(100 + i*30, Screen.height-40, 25, 25), Heart, ScaleMode.ScaleToFit);
-		}
-		
 		GUI.Label(new Rect(Screen.width/2-160, Screen.height-40, 350, 30), "Game Time: " + Timer(TimePenalty));
 	}
 	
 	public string Timer(int penalty = 0)
 	{
-	    var hours = Mathf.Floor(Time.timeSinceLevelLoad/3600.0f);
-	    var minutes = Mathf.Floor((Time.timeSinceLevelLoad - hours*3600f)/60f);
-	    var seconds = Mathf.Floor(Time.timeSinceLevelLoad - hours*3600f - minutes*60f) + penalty;
-	    return string.Format(hours.ToString() + ":" + minutes.ToString() + ":" + seconds.ToString());
+		var hours = Mathf.Floor(Time.timeSinceLevelLoad/3600.0f);
+		var minutes = Mathf.Floor((Time.timeSinceLevelLoad - hours*3600f)/60f);
+		var seconds = Mathf.Floor(Time.timeSinceLevelLoad - hours*3600f - minutes*60f) + penalty;
+		var hoursString = hours > 0 ? pad(hours) + ":" : "";
+		return string.Format( hoursString + pad (minutes) + ":" + pad (seconds));
 	} 
+	
+	private string pad(float number){
+		if(number < 10){
+			return "0" + number.ToString ();
+		} else {
+			return number.ToString ();
+		}
+	}
+	
 }
