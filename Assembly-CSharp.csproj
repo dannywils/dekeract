@@ -56,12 +56,13 @@
      <Compile Include="Assets\Scripts\CharacterController.cs" />
      <Compile Include="Assets\Scripts\Compass.cs" />
      <Compile Include="Assets\Scripts\EndLevelTrigger.cs" />
-     <Compile Include="Assets\Scripts\KillPlayer.cs" />
      <Compile Include="Assets\Scripts\MenuSound.cs" />
      <Compile Include="Assets\Scripts\MinimapPosition.cs" />
+     <Compile Include="Assets\Scripts\ParticleKillPlayer.cs" />
      <Compile Include="Assets\Scripts\RotateCamera.cs" />
      <Compile Include="Assets\Scripts\RotateWorld.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow2D.cs" />
+     <Compile Include="Assets\Scripts\TriggerKillPlayer.cs" />
      <Compile Include="Assets\SphereColor.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
