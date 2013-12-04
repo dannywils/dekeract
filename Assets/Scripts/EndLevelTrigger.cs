@@ -21,17 +21,17 @@ public class EndLevelTrigger : MonoBehaviour {
 
 			if(minutes < 1 )
 			{
-				PlayerPrefs.SetInt(Application.loadedLevelName+"Score", 3);
+				PlayerPrefs.SetInt(Application.loadedLevelName.ToLower ()+"Score", 3);
 			}
-			else if(minutes <2)
+			else if(minutes < 2)
 			{
-				PlayerPrefs.SetInt(Application.loadedLevelName+"Score", 2);
+				PlayerPrefs.SetInt(Application.loadedLevelName.ToLower ()+"Score", 2);
 			}
 			else
 			{
-				PlayerPrefs.SetInt(Application.loadedLevelName+"Score", 1);
+				PlayerPrefs.SetInt(Application.loadedLevelName.ToLower ()+"Score", 1);
 			}
-
+			Debug.Log (Application.loadedLevelName+"Score");
 			int nextLevel = Application.loadedLevel - 1;
 			if(Application.levelCount - 2 > nextLevel){
 				Application.LoadLevel("level" +  nextLevel);

@@ -27,9 +27,6 @@ public class LevelSelection : MonoBehaviour
 
 		int buttonPadding = 5;
 
-
-
-
 		GUI.Label (new Rect (width - 200, height/4, 0, 0), "Dekeract", style);
 
 		GUI.BeginGroup (new Rect (width / 2, height / 2 + yOffset, width, height));
@@ -47,9 +44,15 @@ public class LevelSelection : MonoBehaviour
 				index++;
 				if (Application.levelCount - 2 > index)
 				{
-					if (lastLevel >= index)
+					if (lastLevel >= index || index == 1)
 					{
 						//if the user clicked the button
+						int stars = PlayerPrefs.GetInt("level" + index + "Score");
+						Debug.Log (stars);
+						for(int n = 1; n <= stars; n++)
+						{
+							GUI.DrawTexture(new Rect (width / columns * j  + (20 * n), (height - 2 * yOffset) / rows * i, 25, 25), Star, ScaleMode.ScaleToFit);
+						}
 						if (GUI.Button (new Rect (width / columns * j, (height - 2 * yOffset) / rows * i, width / columns, (height - 2 * yOffset) / rows), index.ToString ()))
 						{
 							//if the level exists, load it
@@ -77,85 +80,5 @@ public class LevelSelection : MonoBehaviour
 
 		GUI.EndGroup ();
 
-		GUI.Label(new Rect (5, 150, 230, 30), " Level 1 Score:");
-		if(PlayerPrefs.HasKey("level1Score")){
-			int stars = PlayerPrefs.GetInt("level1Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 150, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 180, 230, 30), " Level 2 Score:");
-		if(PlayerPrefs.HasKey("level2Score")){
-			int stars = PlayerPrefs.GetInt("level2Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 180, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 210, 230, 30), " Level 3 Score:");
-		if(PlayerPrefs.HasKey("level3Score")){
-			int stars = PlayerPrefs.GetInt("level3Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 210, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 240, 230, 30), " Level 4 Score:");
-		if(PlayerPrefs.HasKey("level4Score")){
-			int stars = PlayerPrefs.GetInt("level4Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 240, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 270, 230, 30), " Level 5 Score:");
-		if(PlayerPrefs.HasKey("level5Score")){
-			int stars = PlayerPrefs.GetInt("level5Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 270, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 300, 230, 30), " Level 6 Score:");
-		if(PlayerPrefs.HasKey("level6Score")){
-			int stars = PlayerPrefs.GetInt("level6Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 300, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 330, 230, 30), " Level 7 Score:");
-		if(PlayerPrefs.HasKey("level7Score")){
-			int stars = PlayerPrefs.GetInt("level7Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 330, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 360, 230, 30), " Level 8 Score:");
-		if(PlayerPrefs.HasKey("level8Score")){
-			int stars = PlayerPrefs.GetInt("level8Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 360, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 390, 230, 30), " Level 9 Score:");
-		if(PlayerPrefs.HasKey("level9Score")){
-			int stars = PlayerPrefs.GetInt("level9Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 390, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
-		GUI.Label(new Rect (5, 420, 230, 30), " Level 10 Score:");
-		if(PlayerPrefs.HasKey("level10Score")){
-			int stars = PlayerPrefs.GetInt("level10Score");
-			for(int n = 1; n <= stars; n++)
-			{
-				GUI.DrawTexture(new Rect (185  + (20 * n), 420, 25, 25), Star, ScaleMode.ScaleToFit);
-			}
-		}
 	}
 }
