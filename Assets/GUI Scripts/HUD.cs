@@ -4,13 +4,14 @@ using System.Collections;
 public class HUD : MonoBehaviour {
 	
 	public GUISkin HUDSkin;
-	public Texture PauseButton, Heart;
-	public int PlayerLives;
+	public Texture PauseButton, Star;
 	bool paused = false;
-	public int TimePenalty;
-	
+
 	void OnGUI ()
 	{
+		var hours = Mathf.Floor(Time.timeSinceLevelLoad/3600.0f);
+		var minutes = Mathf.Floor((Time.timeSinceLevelLoad - hours*3600f)/60f);
+
 		GUI.skin = HUDSkin;
 		
 		if(GUI.Button(new Rect(Screen.width-Screen.width/9 - 10, 10, Screen.width/9, Screen.height/9), "||"))
@@ -40,14 +41,31 @@ public class HUD : MonoBehaviour {
 			}
 			GUI.EndGroup();
 		}
-		GUI.Label(new Rect(Screen.width/2-160, Screen.height-40, 350, 30), "Game Time: " + Timer(TimePenalty));
+		GUI.Label(new Rect(Screen.width/2-160, Screen.height-40, 350, 30), "Game Time: " + Timer());
+
+		GUI.Label(new Rect(10, Screen.height-40, 100, 30), "Score:");
+		if(minutes < 1 )
+		{
+			GUI.DrawTexture(new Rect(100 + 30, Screen.height-40, 25, 25), Star, ScaleMode.ScaleToFit);
+			GUI.DrawTexture(new Rect(100 + 60, Screen.height-40, 25, 25), Star, ScaleMode.ScaleToFit);
+			GUI.DrawTexture(new Rect(100 + 90, Screen.height-40, 25, 25), Star, ScaleMode.ScaleToFit);
+		}
+		else if(minutes <2)
+		{
+			GUI.DrawTexture(new Rect(100 + 30, Screen.height-40, 25, 25), Star, ScaleMode.ScaleToFit);
+			GUI.DrawTexture(new Rect(100 + 60, Screen.height-40, 25, 25), Star, ScaleMode.ScaleToFit);
+		}
+		else
+		{
+			GUI.DrawTexture(new Rect(100 + 30, Screen.height-40, 25, 25), Star, ScaleMode.ScaleToFit);
+		}
 	}
 	
-	public string Timer(int penalty = 0)
+	public string Timer()
 	{
 		var hours = Mathf.Floor(Time.timeSinceLevelLoad/3600.0f);
 		var minutes = Mathf.Floor((Time.timeSinceLevelLoad - hours*3600f)/60f);
-		var seconds = Mathf.Floor(Time.timeSinceLevelLoad - hours*3600f - minutes*60f) + penalty;
+		var seconds = Mathf.Floor(Time.timeSinceLevelLoad - hours*3600f - minutes*60f);
 		var hoursString = hours > 0 ? pad(hours) + ":" : "";
 		return string.Format( hoursString + pad (minutes) + ":" + pad (seconds));
 	} 
